@@ -1,1 +1,1 @@
-# genesis-k8s-nov-2021
+# genesys-k8s-nov-2021
