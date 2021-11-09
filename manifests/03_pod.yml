@@ -29,6 +29,11 @@ spec:
             configMapKeyRef: # value Specific key will be added to the ENVIONMENT variable defined above with the name DATABASE
               name: tomcat
               key: DB_NAME
+        - name: DATABASE_PWD
+          valueFrom:
+            secretKeyRef: # value Specific key will be added to the ENVIONMENT variable defined above with the name DATABASE_PWD
+              name: tomcat
+              key: DB_PWD
       envFrom: # take environment values from other components
         - configMapRef: # from ConfigMap created, all keypairs will get added as ENVIRONMENT variables inside the container 
             name: tomcat
