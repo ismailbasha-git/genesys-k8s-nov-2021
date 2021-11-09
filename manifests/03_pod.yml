@@ -21,7 +21,7 @@ spec:
           memory: "250Mi"
       env: # will be created inside the containers, so will be defined inside container definition
         - name: DB_PORT
-          value: 3306
+          value: "3306"
         - name: QUEUE_MANAGER_URL
           value: https://queuemanager:23012
         - name: DATABASE
