@@ -7,19 +7,19 @@ metadata:
     app: tomcat
     version: "10.0.8"
 spec:
-  containers:
+  containers: # List of container in case of multi-container pod
     - name: tomcat
       image: kulbhushanmayer/tomcat:10.0.8
       ### To download or not to download the image before container creation
       imagePullPolicy: Always # else IfNotPresent # or Never
-      resources:
-        requests:
+      resources: # will be used by containers so will be defined inside container definition
+        requests: # minimum resources needed to schedule a pod on the node, 
           cpu: "125m"
           memory: "125Mi"
-        limits:
+        limits: # maximum amount of resources that a container inside a pod will use and if it goes beyond this it will carsh the recreate 
           cpu: "250m"
           memory: "250Mi"
-      env:
+      env: # will be created inside the containers, so will be defined inside container definition
         - name: DB_PORT
           value: 3306
         - name: QUEUE_MANAGER_URL
