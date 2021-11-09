@@ -61,6 +61,15 @@ spec:
   #nodeSelector: # used to assign pod to a specific type of nodes
     #team: thinknyx # Scheduler will check which node will have this label and assign the POD to that Node
   affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - topologyKey: kubernetes.io/hostname
+          labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values: 
+                  - httpd
     nodeAffinity: # Extend form of NodeSelector
     #   requiredDuringSchedulingIgnoredDuringExecution: #requiredDuringSchedulingIgnoredDuringExecution: ## This is HARD selection
     #     nodeSelectorTerms:
