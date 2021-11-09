@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tomcat-envs
+  namespace: kul
+  labels:
+    app: tomcat
+data:
+  dev.properties: |
+    DB_USER: username
+    DB_NAME: database
+    DB_URL: dev_hostname
+  qa.properties: |
+    DB_USER: username
+    DB_NAME: database
+    DB_URL: qa_hostname
+  prod.properties: |
+    DB_USER: username
+    DB_NAME: database
+    DB_URL: prod_hostname
