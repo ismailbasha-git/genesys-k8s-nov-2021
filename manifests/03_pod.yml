@@ -58,6 +58,8 @@ spec:
     - name: keypair
       secret: # using Secret as volume to be used inside the container
         secretName: keypair
+    - name: cache
+      emptyDir: {} # Life of this volume is till the life of POD
   #nodeSelector: # used to assign pod to a specific type of nodes
     #team: thinknyx # Scheduler will check which node will have this label and assign the POD to that Node
   affinity:
