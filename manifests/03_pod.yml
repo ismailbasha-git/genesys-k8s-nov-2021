@@ -46,6 +46,8 @@ spec:
         - name: keypair
           mountPath: "/opt/app/.ssh"
           readOnly: true
+        - name: cache
+          mountPath: /opt/app/cache
   volumes: # defined volumes to be used inside containers
     - name: env-properties
       configMap: # using data inside the configMap to be converted in the files
