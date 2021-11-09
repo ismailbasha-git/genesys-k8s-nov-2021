@@ -1,0 +1,22 @@
+apiVersion: v1 # Normal key-value
+kind: Namespace # type of object 
+metadata:      # Dictionary, will have multiple key-values, more dictionary or lists
+  name: kul    # name of the object to be created or updated or deleted
+  # namespace is not namespaced so there is no namespace key for the same
+  labels:      # used for filtering
+    # under labels keys & values both can be defined by a user
+    team: IM
+    env: QA
+  annotations: # used for providing some additonal information
+    # under annotations keys & values both can be defined by a user
+    repo: https://github.com/kul-samples/genesys-k8s-nov-2021
+    team-url: support@thinknyx.com
+    lead-name: Kul
+    
+    
+
+### YAML Format, key value pair
+# key will always follow with the :
+# Proper indentation, using spacebar not with TAB
+# Under dictionary all values will be indentated to the right
+# List is set of multiple keys of same type with different values, each entry under list will start with - which is followed by a space
