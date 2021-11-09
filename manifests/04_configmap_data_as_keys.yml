@@ -1,0 +1,13 @@
+### Config is used to defined variables or properties, which can be refered in one more than one pod (inside containers)
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tomcat
+  namespace: kul
+  labels:
+    app: tomcat
+data:
+  ## All these pairs are user defined
+  DB_USER: username
+  DB_NAME: database
+  DB_URL: hostname
