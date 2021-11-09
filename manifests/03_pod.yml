@@ -58,3 +58,30 @@ spec:
     - name: keypair
       secret: # using Secret as volume to be used inside the container
         secretName: keypair
+  #nodeSelector: # used to assign pod to a specific type of nodes
+    #team: thinknyx # Scheduler will check which node will have this label and assign the POD to that Node
+  affinity:
+    nodeAffinity: # Extend form of NodeSelector
+    #   requiredDuringSchedulingIgnoredDuringExecution: #requiredDuringSchedulingIgnoredDuringExecution: ## This is HARD selection
+    #     nodeSelectorTerms:
+    #       - matchExpressions:
+    #           - key: team
+    #             operator: In
+    #             values: 
+    #               - thinknyx
+      preferredDuringSchedulingIgnoredDuringExecution: # giving preference to different nodes available  ## This is SOFT selection
+        - weight: 10
+          preference:
+            matchExpressions:
+              - key: team
+                operator: In
+                values: 
+                  - thinknyx
+        - weight: 9
+          preference:
+            matchExpressions:
+              - key: team
+                operator: In
+                values: 
+                  - thinknyx-internal
+
