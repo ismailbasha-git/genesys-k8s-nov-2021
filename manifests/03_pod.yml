@@ -43,6 +43,9 @@ spec:
         - name: env-properties # referring the volume to be used inside the container 
           mountPath: /properties # inside the container where data will be available
           readOnly: false
+        - name: keypair
+          mountPath: "/opt/app/.ssh"
+          readOnly: true
   volumes: # defined volumes to be used inside containers
     - name: env-properties
       configMap: # using data inside the configMap to be converted in the files
