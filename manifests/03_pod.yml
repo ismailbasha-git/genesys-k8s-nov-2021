@@ -55,3 +55,6 @@ spec:
             path: qa.properties
           - key: prod.properties
             path: prod.properties
+    - name: keypair
+      secret: # using Secret as volume to be used inside the container
+        secretName: keypair
