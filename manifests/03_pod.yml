@@ -10,6 +10,8 @@ spec:
   containers:
     - name: tomcat
       image: kulbhushanmayer/tomcat:10.0.8
+      ### To download or not to download the image before container creation
+      imagePullPolicy: Always # else IfNotPresent # or Never
       resources:
         requests:
           cpu: "125m"
