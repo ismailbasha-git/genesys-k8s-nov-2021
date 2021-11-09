@@ -33,9 +33,6 @@ spec:
           valueFrom:
             secretKeyRef: # value Specific key will be added to the ENVIONMENT variable defined above with the name DATABASE_PWD
               name: tomcat
-    - name: keypair
-      secret: # using Secret as volume to be used inside the container
-        secretName: keypair
               key: DB_PWD
       envFrom: # take environment values from other components
         - configMapRef: # from ConfigMap created, all keypairs will get added as ENVIRONMENT variables inside the container 
