@@ -24,3 +24,8 @@ spec:
           value: 3306
         - name: QUEUE_MANAGER_URL
           value: https://queuemanager:23012
+        - name: DATABASE
+          valueFrom:
+            configMapKeyRef: # value Specific key will be added to the ENVIONMENT variable defined above with the name DATABASE
+              name: tomcat
+              key: DB_NAME
