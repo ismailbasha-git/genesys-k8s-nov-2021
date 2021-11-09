@@ -32,6 +32,10 @@ spec:
       envFrom: # take environment values from other components
         - configMapRef: # from ConfigMap created, all keypairs will get added as ENVIRONMENT variables inside the container 
             name: tomcat
+      volumeMounts:
+        - name: env-properties # referring the volume to be used inside the container 
+          mountPath: /properties # inside the container where data will be available
+          readOnly: false
   volumes: # defined volumes to be used inside containers
     - name: env-properties
       configMap: # using data inside the configMap to be converted in the files
