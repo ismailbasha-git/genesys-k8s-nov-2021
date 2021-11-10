@@ -30,3 +30,19 @@ spec:
               name: thinknyx
           - secretRef:
               name: thinknyx
+      initContainers: ## These containers will start before actual application, are used for environment setup, or enviroment checks
+      - name: database-setup
+        image: kulbhushanmayer/nodejs-app:database-setup
+        command:
+        - "sh"
+        - "-c"
+        - "sh database_setup.sh && sleep 30"
+        envFrom:
+        - configMapRef:
+            name: thinknyx
+        env:
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: thinknyx
+              key: DB_PWD
