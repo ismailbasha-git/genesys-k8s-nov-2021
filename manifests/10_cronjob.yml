@@ -13,5 +13,5 @@ spec:
             name: appbuild
           restartPolicy: OnFailure
   schedule: "*/1 * * * *"
-  successfulJobsHisotryLimit: 2
+  successfulJobsHistoryLimit: 2
   failedJobsHistoryLimit: 2
