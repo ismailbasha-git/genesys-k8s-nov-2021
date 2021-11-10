@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: postgres
+  labels:
+    app: postgres
+    version: "13.4"
+spec:
+  replicas: 1 # number of instance of pods to be created using the below template
+  selector: # it will identify the pods with this label, should be same as the one we have applied in .template.metadata.labels
+    matchLabels:
+      version: "13" # pod which replicaset will manage, should have this label
+  template: ## This is defiition which will create the POD 
+    metadata:
+      labels:
+        app: postgres
+        version: "13"
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13.4
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "125m"
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: DB_PWD
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres
+                  key: DB_USER
+          volumeMounts:
+            - name: postgres
+              mountPath: "/var/lib/postgresql/data"
+          ports:
+            - containerPort: 5432
+              name: postgres
+      volumes:
+        - name: postgres
+          hostPath:
+            path: /postgres
+            type: "DirectoryOrCreate"
