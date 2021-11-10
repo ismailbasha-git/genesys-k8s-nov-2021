@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: appbuild
+  namespace: thinknyx
+spec:
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - image: kulbhushanmayer/sample-image:appBuild
+            name: appbuild
+          restartPolicy: OnFailure
+  schedule: "*/1 * * * *"
+  successfulJobsHisotryLimit: 2
+  failedJobsHistoryLimit: 2
