@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: thinknyx
+  namespace: thinknyx
+spec:
+  selector:
+    app: thinknyx
+  ports:
+  - port: 80
+    targetPort: thinknyx
+    nodePort: 30000
+    protocol: TCP
+  type: NodePort
+  externalIPs:
+    - "3.16.96.169"
