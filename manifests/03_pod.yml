@@ -48,6 +48,8 @@ spec:
           readOnly: true
         - name: cache
           mountPath: /opt/app/cache
+        - name: data
+          mountPath: /opt/app/data
   volumes: # defined volumes to be used inside containers
     - name: env-properties
       configMap: # using data inside the configMap to be converted in the files
@@ -62,6 +64,10 @@ spec:
         secretName: keypair
     - name: cache
       emptyDir: {} # Life of this volume is till the life of POD
+    - name: data
+      hostPath: # Life is post POD life, will be a directory on the Node where POD is assigned
+        path: /home/ubuntu/data # Hostpath location
+        type: "DirectoryOrCreate" # other type are # Directory or File
   #nodeSelector: # used to assign pod to a specific type of nodes
     #team: thinknyx # Scheduler will check which node will have this label and assign the POD to that Node
   affinity:
