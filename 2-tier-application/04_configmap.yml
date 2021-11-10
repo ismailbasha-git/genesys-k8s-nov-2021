@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: thinknyx
+  namespace: thinknyx
+  labels:
+    app: thinknyx
+data:
+  DB_USER: postgres
+  DB_URL: postgres.postgres.svc.cluster.local  # which is resolved by CoreDNS
