@@ -50,6 +50,11 @@ spec:
           mountPath: /opt/app/cache
         - name: data
           mountPath: /opt/app/data
+      ports: # Defining the ports to be exposed, to access the application
+        - containerPort: 8080
+          name: tomcat-http
+        - containerPort: 8443
+          name: tomcat-https
   volumes: # defined volumes to be used inside containers
     - name: env-properties
       configMap: # using data inside the configMap to be converted in the files
