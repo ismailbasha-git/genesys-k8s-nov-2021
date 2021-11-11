@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: vote
+  template:
+    metadata:
+      labels:
+        app: vote
+    spec:
+      containers:
+      - image: thinknyx/vote:1.0
+        name: vote
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vote
+spec:
+  type: NodePort
+  ports:
+  - name: "vote-service"
+    port: 80
+    targetPort: 80
+    nodePort: 31000
+  selector:
+    app: vote
+  externalIPs:
+    - "3.16.96.169"
