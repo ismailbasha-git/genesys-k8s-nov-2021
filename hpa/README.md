@@ -1,6 +1,7 @@
 #### To perform the lab for this activity please follow the instrucion avaiable [here](https://github.com/kul-samples/genesys-k8s-nov-2021/discussions/17).
 #### Manifest deloyment sequence
 1. metrics-server.yml, once successfully deployed below commands will start generating output with information about COU & Memory status for PODS & Nodes
+
 `kubectl top pods -A`
 ```
 NAMESPACE       NAME                                       CPU(cores)   MEMORY(bytes)
